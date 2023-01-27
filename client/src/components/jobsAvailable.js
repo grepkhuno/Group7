@@ -7,16 +7,20 @@ const Jobs = (props) => {
   const [title, setTitle] = useState("");
   const [location, setLocation] = useState("");
   const [allJobs, setAllJobs] = useState([]);
-  const [errors, setErrors] = useState({});
 
-  //   useEffect(() => {
-  //     axios
-  //       .get(`https://data.usajobs.gov/api/search`)
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         console.log(data);
-  //       });
-  //   });
+  useEffect(() => {
+    axios
+      .get(
+        `https://data.usajobs.gov/api/search?PositionTitle=${PositionTitle}&LocationName=${LocationName}`
+      )
+      .then((res) => {
+        console.log(res.data);
+        setAllJobs(res.data);
+      })
+      .catch((err) => {
+        console.log(err.response);
+      });
+  }, []);
 
   return (
     <div>
@@ -37,14 +41,30 @@ const Jobs = (props) => {
             />
           </form>
           <hr />
-          {/* {allJobs.map((job, i) => (
-            <div key={i}>
-              <h3>Job Title</h3>
-              <h5>Job Location</h5>
-              <h6>Job Description</h6>
-              <a href="#"></a>
-            </div>
-          ))} */}
+          <div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Position</th>
+                  <th>Location</th>
+                  <th>Description</th>
+                  <th>Link</th>
+                </tr>
+              </thead>
+              <tbody>
+                {allJobs.map((job, i) => {
+                  return (
+                    <tr key={i}>
+                      <td>{job.PositionTitle}</td>
+                      <td>{job.LocationName}</td>
+                      <td>{job.JobSummary}</td>
+                      <td>{job.PositionURI}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
