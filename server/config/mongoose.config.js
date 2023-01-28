@@ -1,13 +1,10 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose')
 
-mongoose
-  .connect("mongodb://localhost/DevStaffingdb", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    console.log("Conected to Developer Staffing DB");
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+mongoose.connect('mongodb://localhost/DevStaffingdb',{
+    useNewUrlParser:true,
+    useUnifiedTopology:true
+}).then(()=>{
+    console.log("Conected to Developer Staffing DB")
+}).catch((err)=>{
+    console.log(err)
+})
