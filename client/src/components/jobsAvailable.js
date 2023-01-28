@@ -8,27 +8,6 @@ const Jobs = (props) => {
   const [location, setLocation] = useState("");
   const [allJobs, setAllJobs] = useState([]);
 
-  var request = require("request");
-
-  var host = "data.usajobs.gov";
-  var userAgent = "austinspam1996@gmail.com";
-  var authKey = "eaTD3/DPHAKQ5TUjOcnjWm9Ux5VqT61UM1wsiReddwU=";
-
-  request(
-    {
-      url: "https://data.usajobs.gov/api/search",
-      method: "GET",
-      headers: {
-        Host: host,
-        "User-Agent": userAgent,
-        "Authorization-Key": authKey,
-      },
-    },
-    function (error, response, body) {
-      var data = JSON.parse(body);
-    }
-  );
-
   useEffect(() => {
     axios
       .get(
