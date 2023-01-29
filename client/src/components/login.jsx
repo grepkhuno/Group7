@@ -1,4 +1,9 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { useNavigate, Link } from "react-router-dom";
-import "../App.css";
+import React from 'react'
+
+function login() {
+  return (
+    <div>login</div>
+  )
+}
+
+export default login

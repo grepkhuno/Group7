@@ -3,69 +3,75 @@ import axios from "axios";
 import { useNavigate, Link, useParams } from "react-router-dom";
 
 const ContactInfo = (props) => {
-  const { id } = useParams();
-  const [oneDev, setOneDev] = useState({});
-  const [oneDevCont, setOneDevCont] = useState({});
+  const [devID, setDevID] = useState('')
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [comment, setComment] = useState('')
+  const [error, setErrors] = useState({})
 
-  useEffect(() => {
-    axios
-      .get(`http://localhost:8000/api/getDeveloperByID/${id}`)
-      .then((res) => {
-        console.log(res.data);
-        setOneDev(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+  const navigate = useNavigate()
+  const { id } = useParams()
 
-  useEffect(() => {
-    axios
-      .get(`http://localhost:8000/api/getContactByID/${id}`)
-      .then((res) => {
-        console.log(res.data);
-        setOneDevCont(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get(`http://localhost:8000/api/getDeveloperByID/${id}`)
+  //     .then((res) => {
+  //       console.log(res.data);
+  //       setDevID(res.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, []);
+
+  const submitHandler = (e) => {
+    e.preventDefault()
+    axios.post('http://localhost:8000/api/addContact', {
+        name,
+        email,
+        comment
+    }).then((res) => {
+        console.log(res)
+        console.log("passed info to DB");
+        // navigate('/ItemsList')
+
+    }).catch((err) => {
+        console.log("catch from front-end")
+        console.log(err)
+        setErrors(err.response.data.errors)
+    })
+}
+
 
   return (
     <div>
-      <div>
-        <div>
-          <div>{oneDev.devName}</div>
-          <div>{oneDev.devLastName}</div>
-        </div>
-        <div>
-          <Link to={`/summary/${id}`}>Summary</Link>
-          <br />
-          <Link to={`/Tools/${id}`}>Tools</Link>
-          <br />
-          <Link to={`/Contact/${id}`}>Contact</Link>
-        </div>
-      </div>
-      <div>
-        <div>
-          <h2>CONTACT</h2>
-        </div>
-        <div>
-          <h5>Name</h5>
-          <br />
-          <h6>{oneDev.devName}</h6>
-          <br />
-          <h5>Last Name</h5>
-          <h6>{oneDev.devLastName}</h6>
-          <br />
-          <h5>Email</h5>
-          <h6>{oneDevCont.email}</h6>
-          <br />
-          <h5>Comments</h5>
-          <h6>{oneDevCont.comment}</h6>
-        </div>
-      </div>
+        <h1></h1>
+        <h4>If you want to connect to DEVELOPER please add you contact information.</h4>
+
+        <form onSubmit={submitHandler} >
+            <div className="row border boder-warning col-10 mx-auto">
+                <div className="d-flex flex-column align-items-start col-8 border boder-warning p-2">
+                    <label className='form-label'>Name:</label>
+                    <input value={name} id='name' type="text" className='form-control' onChange={(e) => setName(e.target.value)} />
+                    {error.name && <span className='text-danger'>{error.name.message} </span>}
+                    <label className='form-label'>Email:</label>
+                    <input value={email} id='name' type="text" className='form-control' onChange={(e) => setEmail(e.target.value)} />
+                    {error.email && <span className='text-danger'>{error.email.message} </span>}
+                    <label className='form-label'>Comment: </label>
+                    <textarea value={comment} id='commentv' type="text" className='form-control' onChange={(e) => setComment(e.target.value)} />
+                    {error.comment ? <span className='text-danger'>{error.comment.message} </span> : null}
+
+                </div>
+                <div className="d-flex flex-column justify-content-center col-4 border boder-warning align-items-center  ">
+                    <button type='submit' className='btn btn-info m-2 '>Add Pet</button>
+
+                </div>
+            </div>
+        </form>
+        {/* <button className='btn btn-warning m-2' onClick={cancelHandler} >Cancel</button> */}
+
     </div>
-  );
+)
+ 
 };
 export default ContactInfo;
