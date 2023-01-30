@@ -1,10 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import "../developerlist.css";
 
 const DeveloperList = () => {
   const navigate = useNavigate();
+  const [devID, setDevID] = useState([]);
   const [allusers, setAllUsers] = useState([]);
   const [userkey, setuserkey] = useState([]);
 
@@ -29,7 +30,8 @@ const DeveloperList = () => {
     axios
       .get("http://localhost:8000/api/allusers")
       .then((response) => {
-        console.log(response.data);
+        console.log("%%%%%%%%%%%%%%%%%" + response.data);
+        setDevID(response.data._id);
         setAllUsers(response.data);
         setuserkey(response.data);
       })
@@ -37,27 +39,26 @@ const DeveloperList = () => {
         console.log(err.response);
       });
   }, []);
+
+  const contactDeveloperByID = (e) => {
+    e.preventDefault();
+
+    // navigate(`/contact/${id}`);
+  };
+
   return (
     <div>
       <form onSubmit={submithandler} className="">
-        <div className="d-flex justify-content-evenly top-nav">
-          <div className="mt-3">
-            <h2 className="dev-list rounded pt-2 pb-2 ps-2 pe-2">
-              Developers List
-            </h2>
-          </div>
-          <div>
-            <a href="/" className="h-anch">
-              <h2 className="mt-3">Login</h2>
-            </a>
-          </div>
+        <div className=".flex-lg-row p-1 d-flex justify-content-around align-items-center bg-warning">
+          <h3 className="bg-primary p-3">developerList</h3>
+          <h3>Login</h3>
         </div>
-        <div className="d-flex justify-content-between mb-2 text-white">
-          <div className=" d-inline-flex flex-column sidenav mt-3 ">
+        <div className="d-flex justify-content-between mb-2  text-white">
+          <div className=" d-inline-flex flex-column bg-primary mt-3">
             <div className="text-dark">
-              <h2 className="navtitle">Staffing Company Name</h2>
+              <h2>staffing company name</h2>
             </div>
-            <div className="sidenav-option">
+            <div className="mt-5 ">
               <h3>
                 <Link to="" className="text-white">
                   {" "}
@@ -65,7 +66,7 @@ const DeveloperList = () => {
                 </Link>
               </h3>
               <h3>
-                <Link to="" className="text-white tool">
+                <Link to="" className="text-white">
                   Tools
                 </Link>
               </h3>
