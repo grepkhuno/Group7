@@ -37,6 +37,17 @@ const UserSchema = new mongoose.Schema({
     validate: passwordvalidator
   },
 
+  devPicture: {
+    type: String
+},
+devSummary: {
+    type: String
+},
+devTools:{
+    type : Array , 
+    "default" : []
+}
+
 }, { timestamp: true })
 
 UserSchema.pre("save", async function (next) {

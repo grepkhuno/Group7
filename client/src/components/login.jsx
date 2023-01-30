@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useParams } from "react-router-dom";
 import "../App.css";
 
 const Login = () => {
     const [Email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState('');
+    const [users, setusers] = useState('')
+    
 
     const navigate = useNavigate();
 
@@ -17,13 +19,25 @@ const Login = () => {
         password
       },{withCredentials:true})
       .then((res)=>{
-        console.log(res);
-        navigate('/devlist')
+        console.log(res.data.user);
+        navigate(`/user/${res.data.user._id}`)
       }).catch((err)=>{
-        console.log(err)
-        setErrors(err.response)
+        console.log(err.response.data)
+        setErrors(err.response.data.message)
       });
     };
+
+    useEffect(() => {
+      axios
+        .get("http://localhost:8000/api/allusers")
+        .then((response) => {
+          console.log(response.data);
+          setusers(response.data);
+        })
+        .catch((err) => {
+          console.log(err.response);
+        });
+    }, []);
   return(
     <div>
     <ul className="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">

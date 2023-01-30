@@ -1,10 +1,9 @@
-const mongoose = require('mongoose')
-
-mongoose.connect('mongodb://localhost/DevStaffingdb',{
-    useNewUrlParser:true,
-    useUnifiedTopology:true
-}).then(()=>{
-    console.log("Conected to Developer Staffing DB")
-}).catch((err)=>{
-    console.log(err)
+const mongoose = require('mongoose');
+const dbname = "DevStaffingdb"
+mongoose.connect(`mongodb://127.0.0.1/${dbname}`, {
+	useNewUrlParser: true,
+	useUnifiedTopology: true
 })
+
+	.then(() => console.log(`Connected to ${dbname} database!`))
+	.catch((err) => console.log(err));

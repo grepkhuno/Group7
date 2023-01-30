@@ -16,8 +16,6 @@ app.use(cors({
     origin  : 'http://localhost:3000',credentials:true
 }));
 require('./config/mongoose.config')
-const DeveloperRoutes = require('./routes/developers.routes')
-DeveloperRoutes(app)
 const ContactRoutes = require('./routes/contactTb.routes')
 ContactRoutes(app)
 const UserRoutes = require('./routes/user.routes')
