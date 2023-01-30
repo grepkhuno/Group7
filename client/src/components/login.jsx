@@ -18,7 +18,7 @@ const Login = () => {
       },{withCredentials:true})
       .then((res)=>{
         console.log(res);
-        navigate('/meals')
+        navigate('/devlist')
       }).catch((err)=>{
         console.log(err)
         setErrors(err.response)

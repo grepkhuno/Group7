@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const contactShechema = mongoose.Schema({
-    Name: {
+    name: {
         type: String,
         required:[true, "Please enter a Name"]
     },
