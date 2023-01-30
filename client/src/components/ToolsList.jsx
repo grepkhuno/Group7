@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useNavigate, Link } from "react-router-dom";
 
-const Tools = (props) => {
+const ToolsList = (props) => {
   const { id } = useParams();
   const [oneDev, setOneDev] = useState({});
 
@@ -20,7 +20,7 @@ const Tools = (props) => {
 
   return (
     <div>
-      <div>
+      <div className="test">
         <div>
           <div>{oneDev.devName}</div>
           <div>{oneDev.devLastName}</div>
@@ -48,5 +48,4 @@ const Tools = (props) => {
     </div>
   );
 };
-export default Tools;
-
+export default ToolsList;
