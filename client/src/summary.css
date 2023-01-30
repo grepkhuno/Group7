@@ -1,0 +1,30 @@
+.sum {
+  color: black;
+  margin-right: 70em;
+}
+
+.sum-par {
+  color: black;
+  margin-left: 2em;
+  border-style: solid;
+  border-color: rgb(36, 134, 231);
+  width: 30em;
+  top: 50%;
+  left: 1%;
+  right: 1%;
+  position: relative;
+  height: auto;
+  min-height: 100% !important;
+}
+
+.tools {
+  color: black;
+}
+
+.navtitle {
+  margin-left: 2.3em;
+}
+
+.picture {
+  margin-left: 6em;
+}

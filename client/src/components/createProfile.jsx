@@ -7,4 +7,6 @@ const CreateProfile = (props) => {
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [userName, setUserName] = useState("");
+
+  return <div></div>;
 };
