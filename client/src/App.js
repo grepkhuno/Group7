@@ -1,7 +1,7 @@
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Login from "./components/login";
-import DeveloperList from "./components/developerList";
+import Login from "./components/Login";
+import DeveloperList from "./components/DeveloperList";
 import RegisterForm from "./components/Register";
 
 
