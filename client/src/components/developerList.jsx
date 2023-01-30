@@ -1,42 +1,42 @@
 import axios from 'axios';
 import React, { useEffect, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate,useParams } from "react-router-dom";
 
 const DeveloperList = () => {
   const navigate = useNavigate()
+  const [devID, setDevID] = useState([]);
   const [allusers, setAllUsers] = useState([]);
-  const [userkey, setuserkey] = useState([])
+  const [, setuserkey] = useState([])
+  const { id } = useParams()
 
   
   
-  // const submithandler = (e) => {
-  //   e.preventDefault()
-  //   axios.post("http://localhost:8000/api/getAllDevelopersList",{
-  //   },{withCredentials:true})
-  //   .then((res)=>{
-  //     console.log(res);
-  //     navigate('/meals')
-  //   }).catch((err)=>{
-  //     console.log(err.response)
-  //   });
-  // };
-
   useEffect(() => {
     axios
       .get("http://localhost:8000/api/allusers")
       .then((response) => {
-        console.log(response.data);
+        console.log("%%%%%%%%%%%%%%%%%"+response.data);
+        setDevID(response.data._id)
         setAllUsers(response.data);
-        setuserkey(response.data)
+        // setuserkey(response.data)
       })
       .catch((err) => {
         console.log(err.response);
       });
   }, []);
+
+  const contactDeveloperByID = (e) => {
+    e.preventDefault()
+
+            navigate(`/contact/${id}`)
+
+
+}
+
   return (
     
     <div>
-      <form onSubmit={submithandler} className="">
+      <form className="">
         <div className='.flex-lg-row p-1 d-flex justify-content-around align-items-center bg-warning'>
       <h3 className='bg-primary p-3'>developerList</h3>
       <h3>Login</h3>
@@ -54,16 +54,17 @@ const DeveloperList = () => {
 
       </div>
       <div className=''>
-        {allusers.map((user, index) =>{
+        {allusers.map((usersList) =>{
           return(
           <div className='d-sm-flex align-items-center p-5'>
             <div>
+              <button type='submit' className='btn btn-info m-2 ' onClick={contactDeveloperByID} > Contact Developer </button>
               <p className='text-dark nav border border-dark p-4 bg-primary'>Picture of developer</p>
             </div>
             <div className='p-3 mb-2'>
         <ul>
-          <li key={user._id} className='nav border  text-dark border-dark col-6'>
-            {user.Fname} {user.Lname}
+          <li  className='nav border  text-dark border-dark col-6'>
+            {usersList.Fname} {usersList.Lname}
           </li>
             <textarea name="" id="" rows="4" placeholder='summary'></textarea>
         </ul>
