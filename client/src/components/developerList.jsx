@@ -9,17 +9,17 @@ const DeveloperList = () => {
 
   
   
-  const submithandler = (e) => {
-    e.preventDefault()
-    axios.post("http://localhost:8000/api/getAllDevelopersList",{
-    },{withCredentials:true})
-    .then((res)=>{
-      console.log(res);
-      navigate('/meals')
-    }).catch((err)=>{
-      console.log(err.response)
-    });
-  };
+  // const submithandler = (e) => {
+  //   e.preventDefault()
+  //   axios.post("http://localhost:8000/api/getAllDevelopersList",{
+  //   },{withCredentials:true})
+  //   .then((res)=>{
+  //     console.log(res);
+  //     navigate('/meals')
+  //   }).catch((err)=>{
+  //     console.log(err.response)
+  //   });
+  // };
 
   useEffect(() => {
     axios
@@ -47,9 +47,9 @@ const DeveloperList = () => {
         <h2>staffing company name</h2>
         </div>
         <div className='mt-5 '>
-          <h3><Link to="" className='text-white'> Summary </Link></h3>
+          {/* <h3><Link to="" className='text-white'> Summary </Link></h3>
           <h3><Link to="" className='text-white'>Tools</Link></h3>
-          <h3><Link to="" className='text-white'>Contact</Link></h3>
+          <h3><Link to="" className='text-white'>Contact</Link></h3> */}
         </div>
 
       </div>
