@@ -52,4 +52,35 @@ module.exports = {
       res.status(400).send({err})
     })
   },
+  getOneUser: (req, res) => {
+    User.findById(req.params.id)
+        .then((result) => {
+            res.json(result)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+},
+//
+deleteuser: (req, res) => {
+    User.deleteOne({ _id: req.params.id })
+        .then((result) => {
+            res.json(result)
+        })
+        .catch((err) => {
+            console.log(err)
+            res.status(400).json({ err });
+
+        })
+},
+//
+updateuser: (req, res) => {
+    User.updateOne({ _id: req.params.id }, req.body, {runValidators:true})
+        .then((result) => {
+            res.json(result)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+}
   }

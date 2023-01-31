@@ -1,37 +1,45 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useParams } from "react-router-dom";
 import "../App.css";
 import "../login.css";
 
 const Login = () => {
-  const [Email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState("");
+    const [Email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [errors, setErrors] = useState('');
+    const [users, setusers] = useState('')
+    
 
   const navigate = useNavigate();
 
-  const submithandler = (e) => {
-    e.preventDefault();
-    axios
-      .post(
-        "http://localhost:8000/api/login",
-        {
-          Email,
-          password,
-        },
-        { withCredentials: true }
-      )
-      .then((res) => {
-        console.log(res);
-        navigate("/devlist");
-      })
-      .catch((err) => {
-        console.log(err);
-        setErrors(err.response);
+    const submithandler = (e) => {
+      e.preventDefault()
+      axios.post("http://localhost:8000/api/login",{
+        Email,
+        password
+      },{withCredentials:true})
+      .then((res)=>{
+        console.log(res.data.user);
+        navigate(`/user/${res.data.user._id}`)
+      }).catch((err)=>{
+        console.log(err.response.data)
+        setErrors(err.response.data.message)
       });
-  };
-  return (
+    };
+
+    useEffect(() => {
+      axios
+        .get("http://localhost:8000/api/allusers")
+        .then((response) => {
+          console.log(response.data);
+          setusers(response.data);
+        })
+        .catch((err) => {
+          console.log(err.response);
+        });
+    }, []);
+  return(
     <div>
       <div className="d-flex justify-content-evenly top-nav">
         <div className="mt-3">
