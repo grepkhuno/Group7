@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, Link, useParams } from "react-router-dom";
 import "../App.css";
+import "../login.css";
 
 const Login = () => {
     const [Email, setEmail] = useState('');
@@ -10,7 +11,7 @@ const Login = () => {
     const [users, setusers] = useState('')
     
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
     const submithandler = (e) => {
       e.preventDefault()
@@ -40,47 +41,54 @@ const Login = () => {
     }, []);
   return(
     <div>
-    <ul className="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
-    <li className="nav-item" role="presentation">
-      <a className="nav-link" id="tab-login" data-mdb-toggle="pill" href="/devlist" role="tab"
-        aria-controls="pills-login" aria-selected="true">Developers List</a>
-    </li>
-    <li className="nav-item" role="presentation">
-      <a className="nav-link active" id="tab-register" data-mdb-toggle="pill" href="/" role="tab"
-        aria-controls="pills-register" aria-selected="false">Login</a>
-    </li>
-  </ul>
-      <form onSubmit={submithandler} className="">
-        <div>
-          <h1>Login</h1>
+      <div className="d-flex justify-content-evenly top-nav">
+        <div className="mt-3">
+          <a href="/devlist" className="h-anch">
+            <h2>Developers List</h2>
+          </a>
         </div>
-      <div className="form-label">
-              <label className='form-label'>Email: 
-              <input className="form-control"
-                onChange={(e) =>setEmail(e.target.value)}
+        <div>
+          <h2 className="mt-3 log rounded pt-2 pb-2 ps-2 pe-2">Login</h2>
+        </div>
+      </div>
+      <div className="sub mt-5">
+        <form onSubmit={submithandler} className="">
+          <div className="form-label">
+            <label className="form-label">
+              Email:
+              <input
+                className="form-control"
+                onChange={(e) => setEmail(e.target.value)}
                 name="Email"
                 type="text"
               />
-              </label>
-            </div>
+            </label>
+          </div>
 
-            <div className="form-label">
-              <label className='form-label'>Password:
-              <input className="form-control"
-                onChange={(e) =>setPassword(e.target.value)}
+          <div className="form-label">
+            <label className="form-label">
+              Password:
+              <input
+                className="form-control"
+                onChange={(e) => setPassword(e.target.value)}
                 name="password"
                 type="text"
               />
-              </label>
-            </div>
-            {errors ? <p className="validations alert" style={{color: 'red'}}>{errors}</p> : null}
-            <a className="nav-link" id="tab-login" data-mdb-toggle="pill" href="/register" role="tab"
-        aria-controls="pills-login" aria-selected="true">Register</a>
-            <button className='btn btn-info mt-3'>Login</button>
-      </form>
+            </label>
+          </div>
+          {errors ? (
+            <p className="validations alert" style={{ color: "red" }}>
+              {errors}
+            </p>
+          ) : null}
+          <a href="/register" className="d-flex justify-content-end">
+            Register
+          </a>
+          <button className="btn btn-info mt-3 btn-css ">Login</button>
+        </form>
+      </div>
     </div>
-
   );
 };
 
-export default Login
+export default Login;

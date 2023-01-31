@@ -8,31 +8,38 @@ const Jobs = (props) => {
   const [location, setLocation] = useState("");
   const [allJobs, setAllJobs] = useState([]);
 
-  var request = require("request");
+  // var request = require("request");
 
   var host = "data.usajobs.gov";
   var userAgent = "austinspam1996@gmail.com";
   var authKey = "eaTD3/DPHAKQ5TUjOcnjWm9Ux5VqT61UM1wsiReddwU=";
 
-  request(
-    {
-      url: "https://data.usajobs.gov/api/search",
-      method: "GET",
-      headers: {
-        Host: host,
-        "User-Agent": userAgent,
-        "Authorization-Key": authKey,
-      },
-    },
-    function (error, response, body) {
-      var data = JSON.parse(body);
-    }
-  );
+  // request(
+  //   {
+  //     url: "https://data.usajobs.gov/api/search",
+  //     method: "GET",
+  //     headers: {
+  //       Host: host,
+  //       "User-Agent": userAgent,
+  //       "Authorization-Key": authKey,
+  //     },
+  //   },
+  //   function (error, response, body) {
+  //     var data = JSON.parse(body);
+  //   }
+  // );
+
+  const headers = {
+    Host: host,
+    "User-Agent": userAgent,
+    "Authorization-Key": authKey,
+  };
 
   useEffect(() => {
     axios
       .get(
-        // `https://data.usajobs.gov/api/search?PositionTitle=${PositionTitle}&LocationName=${LocationName}`
+        `https://data.usajobs.gov/api/search?PositionTitle=${title}&LocationName=${location}`,
+        { headers: headers }
       )
       .then((res) => {
         console.log(res.data);
@@ -74,16 +81,17 @@ const Jobs = (props) => {
                 </tr>
               </thead>
               <tbody>
-                {allJobs.map((job, i) => {
-                  return (
-                    <tr key={i}>
-                      <td>{job.PositionTitle}</td>
-                      <td>{job.LocationName}</td>
-                      <td>{job.JobSummary}</td>
-                      <td>{job.PositionURI}</td>
-                    </tr>
-                  );
-                })}
+                {allJobs.length > 0 &&
+                  allJobs.map((job, i) => {
+                    return (
+                      <tr key={i}>
+                        <td>{job.PositionTitle}</td>
+                        <td>{job.LocationName}</td>
+                        <td>{job.JobSummary}</td>
+                        <td>{job.PositionURI}</td>
+                      </tr>
+                    );
+                  })}
               </tbody>
             </table>
           </div>

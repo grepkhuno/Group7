@@ -1,0 +1,27 @@
+.sub {
+  display: flex;
+  justify-content: end;
+  margin-right: 20%;
+}
+
+.log {
+  background-color: gold;
+}
+
+.btn-css {
+  margin-left: 69.5%;
+}
+
+.rgstr-css {
+  margin-left: 72%;
+}
+
+.top-nav {
+  background-color: orange;
+  height: 5em;
+}
+
+.h-anch {
+  color: black;
+  text-decoration: underline;
+}
