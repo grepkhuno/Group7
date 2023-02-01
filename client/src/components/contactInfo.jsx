@@ -4,12 +4,13 @@ import { useNavigate, Link, useParams } from "react-router-dom";
 import "../contactinfo.css";
 
 const ContactInfo = (props) => {
-  const [devID, setDevID] = useState("");
-  const [name, setName] = useState("");
+   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [comment, setComment] = useState("");
   const [error, setErrors] = useState({});
+  const [devID, setDevID] = useState("");
   const [devNname, setDevName] = useState("");
+  const [devLastNname, setDevLastName] = useState("");
 
   const navigate = useNavigate();
   const { id } = useParams();
@@ -17,14 +18,12 @@ const ContactInfo = (props) => {
   useEffect(()=>{
     axios.get(`http://localhost:8000/api/oneuser/${id}`)
     .then((res)=>{
-        // setDevName(res.data)
-        console.log("pass %%%%%%%:" + id);
-
+        setDevID(res.data._id)
+        setDevName(res.data.Fname)
+        setDevLastName(res.data.Lname)
       console.log(res);
     }).catch((err)=>{
       console.log(err)
-      console.log("pass %%%%%%%:" );
-
     });
   },[]);
 
@@ -80,7 +79,7 @@ const ContactInfo = (props) => {
 
         <div className="d-flex  content mt-5">
           <h4>
-            If you want to connect to DEVELOPER please add you contact
+            If you want to connect to {devNname} {devLastNname} please add you contact
             information.
           </h4>
 

@@ -62,7 +62,7 @@ const DeveloperList = () => {
               return (
                 <div className="d-sm-flex align-items-center p-5">
                   <div>
-                  <Link className='m-2' to={`/contact/${user.id}`}>Contact Developer</Link>
+                  <Link className='m-2' to={`/contact/${user._id}`}>Contact Developer</Link>
 
                     <img className="border border-dark" src={user.devPicture}/>
                       

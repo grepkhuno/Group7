@@ -21,18 +21,18 @@ const Summary = () => {
     });
   },[]);
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:8000/api/allusers")
-      .then((response) => {
-        console.log(response.data);
-        setAllUsers(response.data);
-        setuserkey(response.data);
-      })
-      .catch((err) => {
-        console.log(err.response);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get("http://localhost:8000/api/allusers")
+  //     .then((response) => {
+  //       console.log(response.data);
+  //       setAllUsers(response.data);
+  //       setuserkey(response.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err.response);
+  //     });
+  // }, []);
   return (
     <div>
       <form className="">
@@ -67,9 +67,7 @@ const Summary = () => {
                 </Link>
               </h3>
               <h3>
-                <Link to={`/tools/${id}`} className="text-white tool ms-4">
-                  Tools
-                </Link>
+              
               </h3>
               <h3>
                 <Link to={`/contact/${id}`} className="text-white contact ms-2">
@@ -79,14 +77,12 @@ const Summary = () => {
             </div>
           </div>
           <div className="">
-            {allusers.map((user, index) => {
+            
               return (
                 <div className="d-sm-flex align-items-center p-5">
                   <div>
-                    <p className="text-dark nav border border-dark p-4 bg-primary">
-                      Picture of developer
-                    </p>
-                  </div>
+                  <img className="border border-dark" src={user.devPicture}/>                 
+                   </div>
                   <div className="p-3 mb-2">
                     <ul>
                       <li
@@ -105,7 +101,7 @@ const Summary = () => {
                   </div>
                 </div>
               );
-            })}
+          
           </div>
           <div>
             <div className="sum">
