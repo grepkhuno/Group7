@@ -75,8 +75,8 @@ const Jobs = () => {
         <div className="container text-center">
           <div className="row">
             <div className="col">
-              <a className="pro-jobSearch" href="">
-                <h1>You're Profile</h1>
+              <a className="pro-jobSearch" href="/devlist">
+                <h1>Developers List</h1>
               </a>
             </div>
             <div className="col">
@@ -85,8 +85,8 @@ const Jobs = () => {
               </h1>
             </div>
             <div className="col">
-              <a className="pro-jobSearch" href="">
-                <h1>Log Out</h1>
+              <a className="pro-jobSearch" href="/">
+                <h1>Login</h1>
               </a>
             </div>
           </div>
