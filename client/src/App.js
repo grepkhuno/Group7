@@ -4,10 +4,9 @@ import Login from "./components/login";
 import DeveloperList from "./components/developerList";
 import RegisterForm from "./components/Register";
 import Summary from "./components/Summary";
-<<<<<<< HEAD
+
 import PersonalInfo from "./components/personalInfo";
 
-=======
 import ContactInfo from "./components/contactInfo";
 import Jobs from "./components/jobsAvailable";
 
