@@ -4,12 +4,8 @@ import Login from "./components/login";
 import DeveloperList from "./components/developerList";
 import RegisterForm from "./components/Register";
 
-import Summary from "./components/Summary";
-
-import PersonalInfo from "./components/personalInfo";
-
-
 import Summary from "./components/summary";
+
 import PersonalInfo from "./components/personalInfo";
 
 import ContactInfo from "./components/contactInfo";
