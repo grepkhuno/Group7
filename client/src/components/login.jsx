@@ -27,18 +27,6 @@ const Login = () => {
         setErrors(err.response.data.message)
       });
     };
-
-    useEffect(() => {
-      axios
-        .get("http://localhost:8000/api/allusers")
-        .then((response) => {
-          console.log(response.data);
-          setusers(response.data);
-        })
-        .catch((err) => {
-          console.log(err.response);
-        });
-    }, []);
   return(
     <div>
       <div className="d-flex justify-content-evenly top-nav">

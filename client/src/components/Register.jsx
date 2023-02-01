@@ -27,7 +27,7 @@ const RegisterForm = () => {
       )
       .then((res) => {
         console.log(res);
-        navigate(`/devlist`);
+        navigate(`/user/${res.data.user._id}`);
       })
       .catch((err) => {
         console.log(err.response.data.err);

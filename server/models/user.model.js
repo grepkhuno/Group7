@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt')
 const validator = require('email-validator')
 const exp = require('constants')
 const validate = require('mongoose-validator')
+const uniqueValidator = require('mongoose-unique-validator')
 
 var passwordvalidator = [
   validate({
@@ -28,7 +29,7 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: [true, "Email is required"],
     validate: [validator.validate, "Please Enter a Valid Email"],
-
+    unique: [true, "email has already been taken"]
   },
 
   password: {
@@ -72,5 +73,7 @@ UserSchema.pre('validate',function(next){
   }
   next()
 })
+
+UserSchema.plugin(uniqueValidator)
 
 module.exports = mongoose.model("User", UserSchema)

@@ -1,30 +1,25 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useParams } from "react-router-dom";
 import "../developerlist.css";
 import "../summary.css";
 
-const DeveloperList = () => {
+const Summary = () => {
   const navigate = useNavigate();
   const [allusers, setAllUsers] = useState([]);
   const [userkey, setuserkey] = useState([]);
+  const [user, setuser] = useState({});
+  const {id} = useParams()
 
-  const submithandler = (e) => {
-    e.preventDefault();
-    axios
-      .post(
-        "http://localhost:8000/api/getAllDevelopersList",
-        {},
-        { withCredentials: true }
-      )
-      .then((res) => {
-        console.log(res);
-        navigate("/meals");
-      })
-      .catch((err) => {
-        console.log(err.response);
-      });
-  };
+  useEffect(()=>{
+    axios.get(`http://localhost:8000/api/oneuser/${id}`)
+    .then((res)=>{
+      setuser(res.data)
+      console.log(res.data._id)
+    }).catch((err)=> {
+      console.log(err)
+    });
+  },[]);
 
   useEffect(() => {
     axios
@@ -40,10 +35,12 @@ const DeveloperList = () => {
   }, []);
   return (
     <div>
-      <form onSubmit={submithandler} className="">
+      <form className="">
         <div className="d-flex justify-content-evenly top-nav">
           <div className="mt-3">
+          <a href="/devlist" className="h-anch">
             <h2 className="">Developers List</h2>
+            </a>
           </div>
           <div>
             <a href="/" className="h-anch">
@@ -70,12 +67,12 @@ const DeveloperList = () => {
                 </Link>
               </h3>
               <h3>
-                <Link to="" className="text-white tool ms-4">
+                <Link to={`/tools/${id}`} className="text-white tool ms-4">
                   Tools
                 </Link>
               </h3>
               <h3>
-                <Link to="" className="text-white contact ms-2">
+                <Link to={`/contact/${id}`} className="text-white contact ms-2">
                   Contact
                 </Link>
               </h3>
@@ -117,15 +114,12 @@ const DeveloperList = () => {
             <div>
               <ul className="sum-par pt-1 pb-1">
                 <li>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Ducimus nam maiores earum quod! Fugiat eligendi neque
-                  voluptatum at perferendis similique facere magni libero quam
-                  dolore dicta soluta, atque optio quisquam.
+                  {user.devSummary}
                 </li>
               </ul>
             </div>
             <div className="tools">
-              <h1>Tools</h1>
+              <h1>{user.devTools}</h1>
             </div>
           </div>
           <div>
@@ -137,4 +131,4 @@ const DeveloperList = () => {
   );
 };
 
-export default DeveloperList;
+export default Summary;
