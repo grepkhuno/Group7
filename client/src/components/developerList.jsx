@@ -8,7 +8,7 @@ const DeveloperList = () => {
   const [devID, setDevID] = useState([]);
   const [allusers, setAllUsers] = useState([]);
   const [userkey, setuserkey] = useState([]);
-
+  const { id } = useParams();
   const submithandler = (e) => {
     e.preventDefault();
     axios
@@ -40,12 +40,6 @@ const DeveloperList = () => {
       });
   }, []);
 
-  const contactDeveloperByID = (e) => {
-    e.preventDefault();
-
-    // navigate(`/contact/${id}`);
-  };
-
   return (
     <div>
       <form onSubmit={submithandler} className="">
@@ -68,6 +62,8 @@ const DeveloperList = () => {
               return (
                 <div className="d-sm-flex align-items-center p-5">
                   <div>
+                  <Link className='m-2' to={`/contact/${user._id}`}>Contact Developer</Link>
+
                     <img className="border border-dark" src={user.devPicture}/>
                       
 

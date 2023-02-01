@@ -11,6 +11,9 @@ const contactShechema = mongoose.Schema({
     },
     comment: {
         type: String
+    },
+    devID: {
+        type: String
     }
 
 }, { timestamps: true })
