@@ -24,48 +24,159 @@ function PersonalInfo() {
   const [devPicture, setdevPicture] = useState("");
   const [devSummary, setdevSummary] = useState("");
   const [devTools, setdevTools] = useState("");
+  const [Fname, setFname] = useState("");
+  const [Lname, setLname] = useState("");
 
-  const handleSubmit = (e) => {
+  const submitFname = (e) => {
     e.preventDefault();
     axios
       .put(`http://localhost:8000/api/updateuser/${id}`, {
-        devPicture,
-        devSummary,
+        Fname
+      }, { withCredentials: true })
+      .then((res) => {
+        console.log(res);
+        navigate(`/user/${id}`)
+      })
+      .catch((err) => {
+        console.log(err)
+        setErrors(err)
+      });
+  };
+
+  const homebtn = () => {
+    navigate('/')
+  }
+
+  const submitLname = (e) => {
+    e.preventDefault();
+    axios
+      .put(`http://localhost:8000/api/updateuser/${id}`, {
+        Lname
+      }, { withCredentials: true })
+      .then((res) => {
+        console.log(res);
+        navigate(`/user/${id}`)
+      })
+      .catch((err) => {
+        console.log(err)
+        setErrors(err)
+      });
+  };
+
+  const submitpicture = (e) => {
+    e.preventDefault();
+    axios
+      .put(`http://localhost:8000/api/updateuser/${id}`, {
+        devPicture
+      }, { withCredentials: true })
+      .then((res) => {
+        console.log(res);
+        navigate(`/user/${id}`)
+      })
+      .catch((err) => {
+        console.log(err)
+        setErrors(err)
+      });
+  };
+
+  const submitsummary = (e) => {
+    e.preventDefault();
+    axios
+      .put(`http://localhost:8000/api/updateuser/${id}`, {
+        devSummary
+      }, { withCredentials: true })
+      .then((res) => {
+        console.log(res);
+        navigate(`/user/${id}`)
+      })
+      .catch((err) => {
+        console.log(err)
+        setErrors(err)
+      });
+  };
+
+  const submittools = (e) => {
+    e.preventDefault();
+    axios
+      .put(`http://localhost:8000/api/updateuser/${id}`, {
+
         devTools  
       }, { withCredentials: true })
       .then((res) => {
         console.log(res);
-        navigate(`/devlist`)
+        navigate(`/user/${id}`)
       })
       .catch((err) => {
-        console.log(err.response.data.err)
-        setErrors(err.response.data.err.errors)
+        console.log(err)
+        setErrors(err)
       });
   };
+
+  
 
   return (
     <div>
     <h1>personalInfo</h1>
-    <div>Welcome, {user.Fname} please add some more information about yourself</div>
+    <button onClick={homebtn}>Home</button>
     <div>
-      <form onSubmit={handleSubmit}>
-      <label>Picture: <input onChange={(e) => setdevPicture(e.target.value)}
+    <div>Welcome, {user.Fname}</div>
+    <form onSubmit={submitFname}>
+    <div>
+      First Name: <input onChange={(e) => setFname(e.target.value)}
+                value={Fname}
+                name="Fname"
+                type="text" 
+                placeholder={user.Fname}/>
+                {errors.Fname ? <p className="validations alert" style={{color: 'red'}}>{errors.Fname.message}</p> : null}
+      <button type='submit'>Update</button>
+      </div>
+      </form>
+      <form onSubmit={submitLname}>
+      <div>
+      Last Name: <input onChange={(e) => setLname(e.target.value)}
+                value={Lname}
+                name="Lname"
+                type="text" 
+                placeholder={user.Lname}/>
+                {errors.Lname ? <p className="validations alert" style={{color: 'red'}}>{errors.Lname.message}</p> : null}
+      <button type='submit'>Update</button>
+      </div>
+      </form>
+      <form onSubmit={submitpicture}>
+      <div>
+      Picture: <input onChange={(e) => setdevPicture(e.target.value)}
                 value={devPicture}
                 name="devPicture"
-                type="text" />
-          </label>
-          <label>Summary: <input onChange={(e) => setdevSummary(e.target.value)}
+                type="text"
+                accept='image/'/>
+                {errors.devPicture ? <p className="validations alert" style={{color: 'red'}}>{errors.devPicture.message}</p> : null}
+                <button type='submit'>Update</button>
+      </div>
+      </form>
+      <form onSubmit={submitsummary}>
+      <div>
+      Summary: <textarea onChange={(e) => setdevSummary(e.target.value)}
                 value={devSummary}
-                name="devSummary"
-                type="text" />
-          </label>
-          <label>Tools: <input onChange={(e) => setdevTools(e.target.value)}
+                name="Lname"
+                type="text" 
+                rows={4}
+                placeholder={user.devSummary}/>
+                {errors.Lname ? <p className="validations alert" style={{color: 'red'}}>{errors.Lname.message}</p> : null}
+                <button type='submit'>Update</button>
+      </div>
+      </form>
+      <form onSubmit={submittools}>
+      <div>
+      Tools: <input onChange={(e) => setdevTools(e.target.value)}
                 value={devTools}
                 name="devTools"
-                type="text" />
-          </label>
-          <button type='submit'>submit</button>
+                type="text"/>
+                {errors.devTools ? <p className="validations alert" style={{color: 'red'}}>{errors.devTools.message}</p> : null}
+                <button type='submit'>Update</button>
+      </div>
       </form>
+
+          
     </div>
     </div>
   )

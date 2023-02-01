@@ -69,13 +69,13 @@ const ContactInfo = (props) => {
           </div>
           <div className="sidenav-option">
             <h3>
-              <Link to="" className="sum-color">
+              <Link to={`/summary/${id}`} className="sum-color">
                 {" "}
                 Summary{" "}
               </Link>
             </h3>
             <h3>
-              <Link to="" className="text-white tool ms-4">
+              <Link to={`/tools/${id}`} className="text-white tool ms-4">
                 Tools
               </Link>
             </h3>
