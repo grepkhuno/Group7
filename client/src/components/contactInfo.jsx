@@ -4,39 +4,44 @@ import { useNavigate, Link, useParams } from "react-router-dom";
 import "../contactinfo.css";
 
 const ContactInfo = (props) => {
-  const [devID, setDevID] = useState("");
-  const [name, setName] = useState("");
+   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [comment, setComment] = useState("");
   const [error, setErrors] = useState({});
+  const [devID, setDevID] = useState("");
+  const [devNname, setDevName] = useState("");
+  const [devLastNname, setDevLastName] = useState("");
 
   const navigate = useNavigate();
   const { id } = useParams();
 
-  // useEffect(() => {
-  //   axios
-  //     .get(`http://localhost:8000/api/getDeveloperByID/${id}`)
-  //     .then((res) => {
-  //       console.log(res.data);
-  //       setDevID(res.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }, []);
+  useEffect(()=>{
+    axios.get(`http://localhost:8000/api/oneuser/${id}`)
+    .then((res)=>{
+        setDevID(res.data._id)
+        setDevName(res.data.Fname)
+        setDevLastName(res.data.Lname)
+      console.log(res);
+    }).catch((err)=>{
+      console.log(err)
+    });
+  },[]);
 
   const submitHandler = (e) => {
     e.preventDefault();
+
     axios
       .post("http://localhost:8000/api/addContact", {
         name,
         email,
         comment,
+        devID
       })
       .then((res) => {
         console.log(res);
         console.log("passed info to DB");
-        // navigate('/ItemsList')
+        navigate("/devlist");
+       
       })
       .catch((err) => {
         console.log("catch from front-end");
@@ -68,31 +73,13 @@ const ContactInfo = (props) => {
             <h2 className="navtitle">Users Name</h2>
           </div>
           <div className="sidenav-option">
-            <h3>
-              <Link to={`/summary/${id}`} className="sum-color">
-                {" "}
-                Summary{" "}
-              </Link>
-            </h3>
-            <h3>
-              <Link to={`/tools/${id}`} className="text-white tool ms-4">
-                Tools
-              </Link>
-            </h3>
-            <h3>
-              <Link
-                to=""
-                className="text-white contact ms-2 text-grey dev-list rounded pt-2 pb-2 ps-2 pe-2"
-              >
-                Contact
-              </Link>
-            </h3>
+          
           </div>
         </div>
 
-        <div className="content mt-5">
+        <div className="d-flex  content mt-5">
           <h4>
-            If you want to connect to DEVELOPER please add you contact
+            If you want to connect to {devNname} {devLastNname} please add you contact
             information.
           </h4>
 
@@ -132,7 +119,7 @@ const ContactInfo = (props) => {
                 {error.comment ? (
                   <span className="text-danger">{error.comment.message} </span>
                 ) : null}
-              </div>
+                          </div>
               <div className="d-flex flex-column justify-content-center col-4 border boder-warning align-items-center  ">
                 <button type="submit" className="btn btn-info m-2 ">
                   Send

@@ -144,10 +144,10 @@ const Jobs = () => {
           <table className="table table-striped-columns border w-75">
             <thead>
               <tr>
-                <th>Position</th>
-                <th>Location</th>
-                <th>Description</th>
-                <th>Link</th>
+                <th className="text-center">Position</th>
+                <th className="text-center">Location</th>
+                <th className="text-center">Description</th>
+                <th className="text-center">Link</th>
               </tr>
             </thead>
             <tbody>
