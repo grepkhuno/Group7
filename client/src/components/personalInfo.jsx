@@ -55,7 +55,21 @@ function PersonalInfo() {
 
   const homebtn = () => {
     navigate('/')
-  }
+  };
+
+  const deleteone = (e) => {
+    e.preventDefault();
+    axios
+      .delete(`http://localhost:8000/api/deleteuser/${id}`, {
+      }, { withCredentials: true })
+      .then((res) => {
+        console.log(res);
+        navigate('/')
+      })
+      .catch((err) => {
+        console.log(err)
+      });
+  };
 
   
 
@@ -71,9 +85,8 @@ function PersonalInfo() {
                 value={Fname}
                 name="Fname"
                 type="text" 
-                placeholder={user.Fname}/>
+                />
                 {errors.Fname ? <p className="validations alert" style={{color: 'red'}}>{errors.Fname.message}</p> : null}
-                <button onClick={submitLname}> Update</button>
       </div>
       <div>
       Last Name: <input onChange={(e) => setLname(e.target.value)}
@@ -107,7 +120,13 @@ function PersonalInfo() {
                 type="text"/>
                 {errors.devTools ? <p className="validations alert" style={{color: 'red'}}>{errors.devTools.message}</p> : null}
       </div>
+      <div>
+        <button onClick={submitLname}> Update</button>
+      </div>
       </form>
+      <div>
+      <button onClick={deleteone} className='btn btn-danger'>Delete</button>
+      </div>
 
           
     </div>
