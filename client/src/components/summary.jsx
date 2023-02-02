@@ -24,90 +24,41 @@ const Summary = () => {
   return (
     <div>
       <form className="">
-        <div className="d-flex justify-content-evenly top-nav">
+      <div className=".flex-lg-row p-1 d-flex justify-content-around align-items-center bg-warning">
           <div className="mt-3">
-          <a href="/devlist" className="h-anch">
-            <h2 className="">Developers List</h2>
+            <a href="/jobavailable" className="h-anch">
+              <h2>Job Search</h2>
             </a>
           </div>
-          <div>
-            <a href="/" className="h-anch">
-              <h2 className="mt-3">Logout</h2>
-            </a>
-          </div>
+          <a href="/" className="mt-3 log rounded pt-2 pb-2 ps-2 pe-2"><h2>Developers List</h2></a>
+          <a href="/" className="h-anch">
+            <h2>Login</h2>
+          </a>
         </div>
-        <div className="d-flex justify-content-between mb-2 text-white">
-          <div className=" d-inline-flex flex-column sidenav mt-3 ">
-            <div className="picture mt-5 rounded-circle">
-              <img alt="pic"></img>
-            </div>
-            <div className="text-dark">
-              <h2 className="navtitle">Users Name</h2>
-            </div>
-            <div className="sidenav-option">
-              <h3>
-                <Link
-                  to=""
-                  className="text-grey dev-list rounded pt-2 pb-2 ps-2 pe-2"
-                >
-                  {" "}
-                  Summary{" "}
-                </Link>
-              </h3>
-              <h3>
-              
-              </h3>
+        <div className="d-flex">
+          <div className=" d-inline-flex flex-column sidenav " width="350">
+            <h2 className="navtitle">{user.Fname} {user.Lname}</h2>
+            
+            <img className=" d-flex " src={user.devPicture} width="200" height="200" />   
+           
               <h3>
                 <Link to={`/contact/${id}`} className="text-white contact ms-2">
-                  Contact
+                  Contact {user.Fname}
                 </Link>
               </h3>
-            </div>
           </div>
-          <div className="">
-            
-              return (
-                <div className="d-sm-flex align-items-center p-5">
-                  <div>
-                  <img className="border border-dark" src={user.devPicture}/>                 
-                   </div>
-                  <div className="p-3 mb-2">
-                    <ul>
-                      <li
-                        key={user._id}
-                        className="nav border  text-dark border-dark col-6"
-                      >
-                        {user.Fname} {user.Lname}
-                      </li>
-                      <textarea
-                        name=""
-                        id=""
-                        rows="4"
-                        placeholder="summary"
-                      ></textarea>
-                    </ul>
-                  </div>
-                </div>
-              );
-          
-          </div>
+
           <div>
             <div className="sum">
               <h1>Summary</h1>
             </div>
             <div>
-              <ul className="sum-par pt-1 pb-1">
-                <li>
-                  {user.devSummary}
-                </li>
-              </ul>
+                  <h4>{user.devSummary}</h4>
             </div>
+            <div><h1>Developer Tools</h1></div>
             <div className="tools">
-              <h1>{user.devTools}</h1>
+              <h4>{user.devTools}</h4>
             </div>
-          </div>
-          <div>
-            <p className="text-dark">Filter by: Language a-z</p>
           </div>
         </div>
       </form>
