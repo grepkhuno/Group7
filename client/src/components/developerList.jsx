@@ -8,7 +8,6 @@ const DeveloperList = () => {
   const [devID, setDevID] = useState([]);
   const [allusers, setAllUsers] = useState([]);
   const [userkey, setuserkey] = useState([]);
-  const { id } = useParams();
   const submithandler = (e) => {
     e.preventDefault();
     axios
@@ -82,14 +81,13 @@ const DeveloperList = () => {
                           {user.Fname} {user.Lname}
                         </Link>
                         </div>
+                        <div>
+                          <div>
+                            Summary:
+                          </div>
+                        {user.devSummary}
+                        </div>
                       </li>
-                      <textarea
-                        name=""
-                        id=""
-                        rows="4"
-
-                        placeholder="summary"
-                      ></textarea>
                     </ul>
                   </div>
                 </div>
