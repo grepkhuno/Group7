@@ -31,6 +31,11 @@ const Login = () => {
     <div>
       <div className="d-flex justify-content-evenly top-nav">
         <div className="mt-3">
+          <a href="/jobavailable" className="h-anch">
+            <h2>Job Search</h2>
+          </a>
+        </div>
+        <div className="mt-3">
           <a href="/devlist" className="h-anch">
             <h2>Developers List</h2>
           </a>

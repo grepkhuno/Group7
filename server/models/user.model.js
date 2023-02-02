@@ -45,8 +45,7 @@ devSummary: {
     type: String
 },
 devTools:{
-    type : Array , 
-    "default" : []
+    type : String
 }
 
 }, { timestamp: true })
