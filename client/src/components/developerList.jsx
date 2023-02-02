@@ -30,7 +30,6 @@ const DeveloperList = () => {
     axios
       .get("http://localhost:8000/api/allusers")
       .then((response) => {
-        console.log("%%%%%%%%%%%%%%%%%" + response.data);
         setDevID(response.data._id);
         setAllUsers(response.data);
         setuserkey(response.data);
@@ -44,6 +43,11 @@ const DeveloperList = () => {
     <div>
       <form onSubmit={submithandler} className="">
         <div className=".flex-lg-row p-1 d-flex justify-content-around align-items-center bg-warning">
+          <div className="mt-3">
+            <a href="/jobavailable" className="h-anch">
+              <h2>Job Search</h2>
+            </a>
+          </div>
           <h2 className="mt-3 log rounded pt-2 pb-2 ps-2 pe-2">Developers List</h2>
           <a href="/" className="h-anch">
             <h2>Login</h2>
@@ -62,10 +66,10 @@ const DeveloperList = () => {
               return (
                 <div className="d-sm-flex align-items-center p-5">
                   <div>
-                  <Link className='m-2' to={`/contact/${user._id}`}>Contact Developer</Link>
+                    <Link className='m-2' to={`/contact/${user._id}`}>Contact Developer</Link>
 
-                    <img className="border border-dark" src={user.devPicture}/>
-                      
+                    <img className="border border-dark" src={user.devPicture} />
+
 
                   </div>
                   <div className="p-3 mb-2">
@@ -75,15 +79,15 @@ const DeveloperList = () => {
                         className="nav border  text-dark border-dark col-6"
                       >
                         <div><Link to={`/summary/${user._id}`}>
-                      {user.Fname} {user.Lname}
-                      </Link>
-                      </div>
+                          {user.Fname} {user.Lname}
+                        </Link>
+                        </div>
                       </li>
                       <textarea
                         name=""
                         id=""
                         rows="4"
-                        
+
                         placeholder="summary"
                       ></textarea>
                     </ul>
