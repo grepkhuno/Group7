@@ -178,7 +178,7 @@ function PersonalInfo() {
                 </div>
               </div>
               <br></br>
-              <div className="d-flex">
+              <div className="d-flex ms-4">
                 <button onClick={submitLname}> Update</button>
                 <button onClick={deleteone} className="btn btn-danger">
                   Delete
