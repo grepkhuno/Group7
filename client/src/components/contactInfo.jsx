@@ -83,7 +83,7 @@ const ContactInfo = (props) => {
             <img className="border border-dark m-2" src={devPic} width={150} />
           </div>
           <div className="text-dark">
-            <h2 className="navtitle">
+            <h2 className="navtitle text-center">
               {devNname} {devLastNname}{" "}
             </h2>
           </div>
