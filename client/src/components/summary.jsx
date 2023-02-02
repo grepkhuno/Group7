@@ -21,18 +21,6 @@ const Summary = () => {
     });
   },[]);
 
-  // useEffect(() => {
-  //   axios
-  //     .get("http://localhost:8000/api/allusers")
-  //     .then((response) => {
-  //       console.log(response.data);
-  //       setAllUsers(response.data);
-  //       setuserkey(response.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err.response);
-  //     });
-  // }, []);
   return (
     <div>
       <form className="">
