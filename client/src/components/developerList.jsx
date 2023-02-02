@@ -47,29 +47,29 @@ const DeveloperList = () => {
               <h2>Job Search</h2>
             </a>
           </div>
-          <h2 className="mt-3 log rounded pt-2 pb-2 ps-2 pe-2">Developers List</h2>
+          <h2 className="mt-3 log rounded pt-2 pb-2 ps-2 pe-2">
+            Developers List
+          </h2>
           <a href="/" className="h-anch">
             <h2>Login</h2>
           </a>
         </div>
-        <div className="d-flex justify-content-between mb-2  text-white">
-          <div className=" d-inline-flex flex-column bg-primary mt-3">
+        <div className="d-flex justify-content-between mb-2 text-white">
+          <div className=" flex-column bg-primary ps-3 pe-3">
             <div className="text-dark">
-              <h2>staffing company name</h2>
-            </div>
-            <div className="mt-5 ">
+              <h2 className="mt-3">staffing company</h2>
             </div>
           </div>
-          <div className="">
+          <div className="contact-dev">
             {allusers.map((user, index) => {
               return (
-                <div className="d-sm-flex align-items-center p-5">
+                <div className="d-sm-flex d-flex justify-content-center align-items-center p-5">
                   <div>
-                    <Link className='m-2' to={`/contact/${user._id}`}>Contact Developer</Link>
+                    <Link className="m-2" to={`/contact/${user._id}`}>
+                      Contact Developer
+                    </Link>
 
                     <img className="border border-dark" src={user.devPicture} />
-
-
                   </div>
                   <div className="p-3 mb-2">
                     <ul>
@@ -77,9 +77,10 @@ const DeveloperList = () => {
                         key={user._id}
                         className="nav border  text-dark border-dark col-6"
                       >
-                        <div><Link to={`/summary/${user._id}`}>
-                          {user.Fname} {user.Lname}
-                        </Link>
+                        <div>
+                          <Link to={`/summary/${user._id}`}>
+                            {user.Fname} {user.Lname}
+                          </Link>
                         </div>
                         <div>
                           <div>
@@ -88,14 +89,17 @@ const DeveloperList = () => {
                         {user.devSummary}
                         </div>
                       </li>
+                      <textarea
+                        name=""
+                        id=""
+                        rows="4"
+                        placeholder="summary"
+                      ></textarea>
                     </ul>
                   </div>
                 </div>
               );
             })}
-          </div>
-          <div>
-            <p className="text-dark">Filter by: Language a-z</p>
           </div>
         </div>
       </form>
