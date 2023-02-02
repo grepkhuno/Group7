@@ -75,62 +75,81 @@ function PersonalInfo() {
 
   return (
     <div>
-    <h1>personalInfo</h1>
-    <button onClick={homebtn}>Home</button>
-    <div>
-    <div>Welcome, {user.Fname}</div>
-    <form onSubmit={submitLname}>
-    <div>
-      First Name: <input onChange={(e) => setFname(e.target.value)}
-                value={Fname}
-                name="Fname"
-                type="text" 
-                />
-                {errors.Fname ? <p className="validations alert" style={{color: 'red'}}>{errors.Fname.message}</p> : null}
-      </div>
-      <div>
-      Last Name: <input onChange={(e) => setLname(e.target.value)}
-                value={Lname}
-                name="Lname"
-                type="text" 
-                placeholder={user.Lname}/>
-                {errors.Lname ? <p className="validations alert" style={{color: 'red'}}>{errors.Lname.message}</p> : null}
-      </div>
-      <div>
-      Picture: <input onChange={(e) => setdevPicture(e.target.value)}
-                value={devPicture}
-                name="devPicture"
-                type="text"
-                accept='image/'/>
-                {errors.devPicture ? <p className="validations alert" style={{color: 'red'}}>{errors.devPicture.message}</p> : null}
-      </div>
-      <div>
-      Summary: <textarea onChange={(e) => setdevSummary(e.target.value)}
-                value={devSummary}
-                name="Lname"
-                type="text" 
-                rows={4}
-                placeholder={user.devSummary}/>
-                {errors.Lname ? <p className="validations alert" style={{color: 'red'}}>{errors.Lname.message}</p> : null}
-      </div>
-      <div>
-      Tools: <input onChange={(e) => setdevTools(e.target.value)}
-                value={devTools}
-                name="devTools"
-                type="text"/>
-                {errors.devTools ? <p className="validations alert" style={{color: 'red'}}>{errors.devTools.message}</p> : null}
-      </div>
-      <div>
-        <button onClick={submitLname}> Update</button>
-      </div>
-      </form>
-      <div>
-      <button onClick={deleteone} className='btn btn-danger'>Delete</button>
-      </div>
+        <div className=".flex-lg-row p-1 d-flex justify-content-around align-items-center bg-warning">
+         <a href="/devlist" className="h-anch">
+            <h2 className="">Developers List</h2>
+            </a>
+         <a href="/" className="h-anch">
+         <h2>Login</h2>
+         </a>
+        </div>
 
-          
+
+      <div className='d-flex'>
+       
+          <div className=" d-inline-flex flex-column bg-primary ">
+            <div className="text-dark">
+              <h2>Personal Informaiton</h2>
+            </div>
+       
+      </div>
+      
+    
+    <div className='d-flex justifiy-content-around'>
+          <div className='d-flex'>
+            <form onSubmit={submitLname}>
+            <h1>Welcom {Fname},</h1>
+            <div>
+            First Name: <br></br><input onChange={(e) => setFname(e.target.value)}
+                      value={Fname}
+                      name="Fname"
+                      type="text" 
+                      />
+                      {errors.Fname ? <p className="validations alert" style={{color: 'red'}}>{errors.Fname.message}</p> : null}
+            </div>
+            <div>
+            Last Name:<br></br> <input onChange={(e) => setLname(e.target.value)}
+                      value={Lname}
+                      name="Lname"
+                      type="text" 
+                      placeholder={user.Lname}/>
+                      {errors.Lname ? <p className="validations alert" style={{color: 'red'}}>{errors.Lname.message}</p> : null}
+            </div>
+            <div>
+            Picture: <br></br><input onChange={(e) => setdevPicture(e.target.value)}
+                      value={devPicture}
+                      name="devPicture"
+                      type="text"
+                      accept='image/'/>
+                      {errors.devPicture ? <p className="validations alert" style={{color: 'red'}}>{errors.devPicture.message}</p> : null}
+            </div>
+            <div>
+            Summary:<br></br> <textarea onChange={(e) => setdevSummary(e.target.value)}
+                      value={devSummary}
+                      name="Lname"
+                      type="text" 
+                      rows={4}
+                      placeholder={user.devSummary}/>
+                      {errors.Lname ? <p className="validations alert" style={{color: 'red'}}>{errors.Lname.message}</p> : null}
+            </div>
+            <div>
+            Tools: <br></br><input onChange={(e) => setdevTools(e.target.value)}
+                      value={devTools}
+                      name="devTools"
+                      type="text"/>
+                      {errors.devTools ? <p className="validations alert" style={{color: 'red'}}>{errors.devTools.message}</p> : null}
+            </div><br></br>
+            <div className='d-flex'>
+              <button onClick={submitLname}> Update</button>
+              <button onClick={deleteone} className='btn btn-danger'>Delete</button>
+            </div>
+            </form>
+            </div>
+
     </div>
     </div>
+    </div>
+    
   )
 }
 
