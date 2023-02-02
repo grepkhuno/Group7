@@ -78,11 +78,11 @@ const ContactInfo = (props) => {
             </div>
             <div className="d-flex justify-content-between mb-2 text-white">
                 <div className=" d-inline-flex flex-column sidenav mt-3 ">
-                    <div className="picture mt-5 rounded-circle">
-                        <img className="border border-dark" src={devPic} />
+                    <div className="d-flex picture mt-5 rounded-circle">
+                        <img className="border border-dark m-2" src={devPic} />
                     </div>
                     <div className="text-dark">
-                        <h2 className="navtitle">Users Name</h2>
+                        <h2 className="navtitle">{devNname} {devLastNname} </h2>
                     </div>
                     <div className="sidenav-option">
 
@@ -96,7 +96,7 @@ const ContactInfo = (props) => {
                     </h4>
 
                     <form onSubmit={submitHandler}>
-                        <div className="row border boder-warning col-10 mx-auto">
+                        <div className="d-flex row border boder-warning col-10 mx-auto">
                             <div className="d-flex flex-column align-items-start col-8 border boder-warning p-2">
                                 <label className="form-label">Name:</label>
                                 <input
