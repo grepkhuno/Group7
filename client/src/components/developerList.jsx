@@ -82,14 +82,12 @@ const DeveloperList = () => {
                             {user.Fname} {user.Lname}
                           </Link>
                         </div>
-                        <div>
-                          <div>
-                            Summary:
-                          </div>
-                        {user.devSummary}
+                        <hr />
+                        <div className="dev-list-summary ms-2 pb-2">
+                          <div>Summary:</div>
+                          <div>{user.devSummary}</div>
                         </div>
                       </li>
-                     
                     </ul>
                   </div>
                 </div>
