@@ -55,7 +55,7 @@ const DeveloperList = () => {
           </a>
         </div>
         <div className="d-flex justify-content-between mb-2 text-white">
-          <div className=" flex-column bg-primary ps-3 pe-3">
+          <div className=" flex-column bg-primary ps-3">
             <div className="text-dark">
               <h2 className="mt-3">staffing company</h2>
             </div>
@@ -89,12 +89,7 @@ const DeveloperList = () => {
                         {user.devSummary}
                         </div>
                       </li>
-                      <textarea
-                        name=""
-                        id=""
-                        rows="4"
-                        placeholder="summary"
-                      ></textarea>
+                     
                     </ul>
                   </div>
                 </div>
