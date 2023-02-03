@@ -76,7 +76,10 @@ function PersonalInfo() {
         console.log(err);
       });
   };
+  const cancel = (e) => {
+    navigate(`/summary/${id}`);
 
+  };
   return (
     <div>
       <div className=".flex-lg-row p-1 d-flex justify-content-around align-items-center bg-warning pb-3 pt-3">
@@ -180,7 +183,9 @@ function PersonalInfo() {
               <br></br>
               <div className="d-flex ms-4">
                 <button onClick={submitLname}> Update</button>
+                <button onClick={cancel} className="btn btn-info">Cancel</button>
                 <button onClick={deleteone} className="btn btn-danger">
+
                   Delete
                 </button>
               </div>
