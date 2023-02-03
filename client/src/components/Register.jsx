@@ -36,25 +36,34 @@ const RegisterForm = () => {
   };
   return (
     <div>
-    <div className="d-flex justify-content-evenly top-nav">
-                <div className="mt-3">
-                    <a href="/jobavailable" className="h-anch">
-                        <h2>Job Search</h2>
-                    </a>
-                </div>
-                <div className="mt-3">
-                    <a href="/devlist" className="h-anch">
-                        <h2 className="dev-list rounded pt-2 pb-2 ps-2 pe-2">
-                            Developers List
-                        </h2>
-                    </a>
-                </div>
-                <div>
-                    <a href="/" className="h-anch">
-                        <h2 className="mt-3">Login</h2>
-                    </a>
-                </div>
-            </div>
+      <ul className="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
+        <li className="nav-item" role="presentation">
+          <a
+            className="nav-link"
+            id="tab-login"
+            data-mdb-toggle="pill"
+            href="/devlist"
+            role="tab"
+            aria-controls="pills-login"
+            aria-selected="true"
+          >
+            Developers List
+          </a>
+        </li>
+        <li className="nav-item" role="presentation">
+          <a
+            className="nav-link active"
+            id="tab-register"
+            data-mdb-toggle="pill"
+            href="/"
+            role="tab"
+            aria-controls="pills-register"
+            aria-selected="false"
+          >
+            login
+          </a>
+        </li>
+      </ul>
       <div className="d-flex justify-content-center">
         <form onSubmit={handleSubmit} className="tab-pane">
           <div>

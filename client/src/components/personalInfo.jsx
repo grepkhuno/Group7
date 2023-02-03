@@ -48,7 +48,7 @@ function PersonalInfo() {
       )
       .then((res) => {
         console.log(res);
-        navigate(`/user/${id}`);
+        navigate(`/summary/${id}`);
       })
       .catch((err) => {
         console.log(err);
