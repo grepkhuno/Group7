@@ -30,7 +30,7 @@ const Summary = () => {
               <h2>Job Search</h2>
             </a>
           </div>
-          <a href="/" className="mt-3 log rounded pt-2 pb-2 ps-2 pe-2"><h2>Developers List</h2></a>
+          <a href="/devlist" className="mt-3 log rounded pt-2 pb-2 ps-2 pe-2"><h2>Developers List</h2></a>
           <a href="/" className="h-anch">
             <h2>Login</h2>
           </a>
