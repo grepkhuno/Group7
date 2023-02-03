@@ -83,13 +83,10 @@ const DeveloperList = () => {
                           </Link>
                         </div>
                         <div>
-                          <div>
-                            Summary:
-                          </div>
-                        {user.devSummary}
+                          <div className="dev-list-summary">Summary:</div>
+                          {user.devSummary}
                         </div>
                       </li>
-                     
                     </ul>
                   </div>
                 </div>
